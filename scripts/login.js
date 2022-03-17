@@ -2,28 +2,25 @@ const loginBtn = document.querySelector('.signInBtn');
 const signUpBtn = document.querySelector('.signUpBtn');
 const emailInput = document.querySelector('#InputEmail');
 const passwordInput = document.querySelector('#InputPassword');
+let logged = localStorage.getItem('logged');
 
-// Check if all fields are filled
-const validateLogin = () => {
-    if (emailInput.value === '' || passwordInput.value === '') {
-        window.alert('Por favor preencha todos os campos.')
-    } else if (logged === true ) {
-        localStorage.getItem('login')
-  
+// Check Login Status
+const checkLogin = () => {
+    if (logged !== true) {
+      window.alert('Você precisa estar autenticado para utilizar o sistema.')
+      window.location.href="index.html"
     }
 }
 
-loginBtn.addEventListener('click',validateLogin)
-  
 // Check Credentials
-    const login = () =>{
-    let emailValue = localStorage.setItem('email', emailInput.value);
-    let passwordValue = localStorage.setItem('password', passwordInput.value);
+const login = () =>{
+    localStorage.setItem('email', emailInput.value);
+    localStorage.setItem('password', passwordInput.value);
 
     let email = window.localStorage.getItem('email')
     let password = window.localStorage.getItem('password')
 
-    if(emailValue === email && passwordValue === password)
+    if(emailInput.value === email && passwordInput.value === password)
     {
         localStorage.setItem('logged', true);
     } else {
@@ -31,11 +28,15 @@ loginBtn.addEventListener('click',validateLogin)
     }
 }
 
-// Check Login Status
-const checkLogin = () => {
-    let logged = localStorage.getItem('logged');
-    if (logged !== true) {
-      window.alert('Você precisa estar autenticado para utilizar o sistema.')
-      window.location.href="index.html"
+// Check if all fields are filled
+const validateLogin = () => {
+    if (emailInput.value === '' || passwordInput.value === '') {
+        window.alert('Por favor preencha todos os campos.')
+    } else if (logged === true ) {
+        window.alert('Você já está logado')
+    } else{
+        login()
     }
 }
+
+loginBtn.addEventListener('click',validateLogin)
