@@ -51,8 +51,9 @@
               </li>
             </ul>
             <form class="d-flex">
-              <input class="form-control me-2" type="search" placeholder="Procurar" aria-label="Procurar">
-              <button class="btn btn-outline-primary" type="submit">Procurar</button>
+              <button class="loginLogout btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" aria-controls="offcanvas">
+                Login
+              </button>
             </form>
           </div>
         </div>
@@ -62,7 +63,7 @@
       <br>
       <br>
 
-      <div class="loginPanel navbar navbar-dark bg-dark container-fluid">
+      <div class="loginPanel invisible navbar navbar-dark bg-dark container-fluid">
       <div class="dropdown">
         <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
           
@@ -79,9 +80,7 @@
         </ul>
       </div>
 
-      <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" aria-controls="offcanvas">
-        Login
-      </button>
+
 
       <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel">
         <div class="offcanvas-header">
