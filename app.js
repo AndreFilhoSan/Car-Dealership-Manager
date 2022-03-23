@@ -1,13 +1,32 @@
 const express = require('express');
+const morgan = require('morgan');
+const mongoose = require('mongoose');
 
+// EXPRESS APP
 const app = express();
+
+// CONNECT TO MONGODB
+const dbURI = 'mongodb://localhost:27017/cardealership';
+mongoose.connect(dbURI)
+.then((result) => console.log('Conected to DB'))
+.catch((error) => console.log(error));
+
+// REGISTER VIEW ENGINE
+app.set('view engine', 'ejs');
 
 // LISTEN FOR REQUEST
 app.listen(3000);
 
+// MIDDLEWARE & STATIC FILES
+app.use(express.static('public'))
+
+// MORAGAN LOGGER
+app.use(morgan('dev'));
+
+
 app.get('/', (req, res) => {
     // res.send('<p>Home Page</p>')
-    res.sendFile('./index.html', { root: __dirname });
+    res.render('index');
 });
 
 app.get('/about', (req, res) => {
@@ -20,5 +39,5 @@ app.get('/about-us', (req, res) => {
 
 // 404
 app.use((req, res) => {
-    res.status(404).sendFile('./index.html', { root: __dirname });
+    res.status(404).render('index');
 });

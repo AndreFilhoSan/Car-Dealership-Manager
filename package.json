@@ -18,7 +18,10 @@
   },
   "homepage": "https://github.com/AndreFilhoSan/Car-Dealership-Manager#readme",
   "dependencies": {
+    "ejs": "^3.1.6",
     "express": "^4.17.3",
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.21",
+    "mongoose": "^6.2.8",
+    "morgan": "^1.10.0"
   }
 }
