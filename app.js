@@ -15,7 +15,9 @@ mongoose.connect(dbURI)
 app.set('view engine', 'ejs');
 
 // LISTEN FOR REQUEST
-app.listen(3000);
+app.listen(3000, 'localhost', () => {
+    console.log('Server UP')
+});
 
 // MIDDLEWARE & STATIC FILES
 app.use(express.static('public'))
