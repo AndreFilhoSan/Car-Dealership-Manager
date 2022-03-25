@@ -15,7 +15,7 @@ mongoose.connect(dbURI)
 app.set('view engine', 'ejs');
 
 // LISTEN FOR REQUEST
-app.listen(3000, 'localhost', () => {
+app.listen(3000, 'localhost/Car-Dealership-Manager', () => {
     console.log('Server UP')
 });
 
