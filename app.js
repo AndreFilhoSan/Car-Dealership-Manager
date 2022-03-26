@@ -1,6 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
+const Cart = require('./models/car')
 
 // EXPRESS APP
 const app = express();
@@ -21,6 +22,16 @@ app.listen(3000, 'localhost', () => {
 
 // MIDDLEWARE & STATIC FILES
 app.use(express.static('public'))
+
+// MANGOOSE AND MONGO SANDBOX
+app.get('/add-car', (req, res) => {
+    const car = new Car({
+        name: 'Gol',
+        mode: 'Gol',
+        color: 'red'
+    });
+    car.save();
+})
 
 // MORAGAN LOGGER
 app.use(morgan('dev'));
