@@ -1,7 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
-const Cart = require('./models/car')
+const Car = require('./models/car')
 
 // EXPRESS APP
 const app = express();
@@ -27,11 +27,41 @@ app.use(express.static('public'))
 app.get('/add-car', (req, res) => {
     const car = new Car({
         name: 'Gol',
-        mode: 'Gol',
-        color: 'red'
+        model: 'Gol',
+        color: 'red',
+        year: 2022,
+        licensePlate: 'XXX0000'
+
     });
-    car.save();
+    car.save()
+    .then((result) => {
+        res.send(result)
+    })
+    .catch((err) => {
+        console.log(err);
+    });
+});
+
+app.get('/all-cars', (req, res) => {
+    Car.find()
+        .then((result) => {
+            res.send(result);
+    })
+        .catch((err) => {
+            console.log(err);
+    })
+});
+
+app.get('/single-car', (req, res) => {
+    Car.findById('623b89c2aa09f6a4419aa45b')
+        .then((result) => {
+            res.send(result);
+        })
+        .catch((err) => {
+            console.log(err);
+        })
 })
+
 
 // MORAGAN LOGGER
 app.use(morgan('dev'));
