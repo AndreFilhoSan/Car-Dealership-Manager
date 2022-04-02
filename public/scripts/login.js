@@ -36,17 +36,6 @@ const login = () => {
     }
 }
 
-const logout = () => {
-    if (loginLogout.innerText === 'Logout') {
-        window.localStorage.clear();
-        loginLogout.innerText = 'Login';
-        loginLogout.classList.remove('btn-warning')
-        loginLogout.classList.add('btn-primary')
-    } else {
-    login();
-    }
-}
-
 loginBtn.addEventListener('click', login)
 loginLogout.addEventListener('click', logout)
 
